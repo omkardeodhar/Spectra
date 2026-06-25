@@ -3,57 +3,283 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – Spectra</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 60px auto; padding: 0 24px; color: #111; line-height: 1.7; }
-    h1 { font-size: 24px; margin-bottom: 4px; }
-    h2 { font-size: 16px; margin-top: 32px; }
-    p, li { font-size: 15px; color: #374151; }
-    a { color: #2563eb; }
-  </style>
+  <meta name="description" content="Spectra is a Chrome extension that audits HTTP security headers, cookies, and CORS configuration for any website. Get an instant security grade and fix recommendations." />
+  <title>Spectra - Security Header Auditor for Chrome</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <h1>Privacy Policy</h1>
-  <p style="color:#6b7280;font-size:14px">Last updated: June 2025</p>
-
-  <p>Spectra is a Chrome extension that audits HTTP security headers, cookies, and CORS configuration for websites you visit. This policy explains what data the extension accesses and how it is handled.</p>
-
-  <h2>Data We Access</h2>
-  <ul>
-    <li><strong>HTTP response headers</strong> — read from pages you navigate to, to evaluate security configuration. This data never leaves your device.</li>
-    <li><strong>Cookies</strong> — read from the active tab to analyze cookie security attributes (HttpOnly, Secure, SameSite). This data never leaves your device.</li>
-    <li><strong>Page URLs</strong> — used to fetch headers and perform security analysis. URLs are not stored persistently or transmitted to our servers.</li>
+<nav>
+  <a href="/" class="nav-logo">Spectra</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="privacy-policy.html">Privacy</a></li>
+    <li><a href="#" class="nav-cta">Add to Chrome</a></li>
   </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M3 12h18M3 6h18M3 18h18"/>
+    </svg>
+  </button>
+</nav>
 
-  <h2>External Requests</h2>
-  <p>Spectra makes requests to the following third-party services:</p>
-  <ul>
-    <li><strong>hstspreload.org</strong> — to check whether a domain is on the browser HSTS preload list. Only the domain name is sent. No personal data is included.</li>
-    <li><strong>Websites you choose to scan</strong> — when using the Bulk Scanner, the extension fetches HTTP headers directly from URLs you provide.</li>
-  </ul>
-  <p>No data is sent to Spectra's servers. We do not operate any data collection infrastructure.</p>
+<section class="hero">
+  <div class="hero-copy">
+    <span class="hero-eyebrow">Chrome Extension</span>
+    <h1>Security headers,<br><span>without the guesswork.</span></h1>
+    <p class="hero-sub">
+      Spectra scans any website and shows you which HTTP security headers are missing,
+      what risks they create, and the exact config to fix them.
+      Works right from your browser, in seconds.
+    </p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+          <path d="M8 12l4 4 4-4M12 8v8"/>
+        </svg>
+        Add to Chrome - Free
+      </a>
+      <a href="#features" class="btn-secondary">
+        See what it checks &rarr;
+      </a>
+    </div>
+    <p class="hero-note">No account needed. Free to install.</p>
+  </div>
 
-  <h2>Local Storage</h2>
-  <ul>
-    <li><strong>Session storage</strong> — scan results and header data are stored temporarily in <code>chrome.storage.session</code> and are automatically cleared when the browser is closed.</li>
-    <li><strong>Local storage</strong> — your Pro license key is stored in <code>chrome.storage.local</code> on your device. It is never transmitted to third parties.</li>
-  </ul>
+  <div class="mock-wrap">
+    <div class="mock-popup">
+      <div class="mock-bar">
+        <span class="mock-bar-brand">Spectra</span>
+        <span class="mock-bar-url">github.com</span>
+      </div>
+      <div class="mock-score-section">
+        <div class="mock-score-lbl">Security Score</div>
+        <div class="mock-score-row">
+          <span class="mock-grade">A</span>
+          <span class="mock-grade-desc">Excellent</span>
+          <span class="mock-score-num">84 / 100</span>
+        </div>
+        <div class="mock-progress">
+          <div class="mock-progress-fill"></div>
+        </div>
+      </div>
+      <div class="mock-tabs">
+        <div class="mock-tab active">Headers</div>
+        <div class="mock-tab">Cookies <span class="pro-tag">PRO</span></div>
+        <div class="mock-tab">CORS <span class="pro-tag">PRO</span></div>
+      </div>
+      <ul class="mock-rows">
+        <li class="mock-row">
+          <span class="mock-dot green"></span>
+          <span class="mock-hname">Content-Security-Policy</span>
+          <span class="mock-risk"></span>
+          <span class="mock-status active">Active</span>
+        </li>
+        <li class="mock-row">
+          <span class="mock-dot green"></span>
+          <span class="mock-hname">Strict-Transport-Security</span>
+          <span class="mock-risk"></span>
+          <span class="mock-status active">Active</span>
+        </li>
+        <li class="mock-row">
+          <span class="mock-dot red"></span>
+          <span class="mock-hname">X-Frame-Options</span>
+          <span class="mock-risk high">High</span>
+          <span class="mock-status missing">Not Set</span>
+        </li>
+        <li class="mock-row">
+          <span class="mock-dot red"></span>
+          <span class="mock-hname">Permissions-Policy</span>
+          <span class="mock-risk medium">Medium</span>
+          <span class="mock-status missing">Not Set</span>
+        </li>
+        <li class="mock-row">
+          <span class="mock-dot green"></span>
+          <span class="mock-hname">Referrer-Policy</span>
+          <span class="mock-risk"></span>
+          <span class="mock-status active">Active</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <h2>Data Sharing</h2>
-  <p>We do not sell, share, or transmit any personal data to third parties. The extension does not collect analytics, crash reports, or usage statistics.</p>
+<section class="features" id="features">
+  <div class="section-inner">
+    <span class="section-tag">What it checks</span>
+    <h2 class="section-heading">Everything in one place</h2>
+    <p class="section-sub">
+      Spectra runs all the checks that matter for a site's HTTP security posture,
+      without any setup or configuration.
+    </p>
 
-  <h2>Permissions</h2>
-  <p>Spectra requests the following Chrome permissions:</p>
-  <ul>
-    <li><strong>webRequest</strong> — to read HTTP response headers from pages you visit</li>
-    <li><strong>cookies</strong> — to read cookie attributes for the active tab</li>
-    <li><strong>tabs</strong> — to identify the current active tab URL</li>
-    <li><strong>storage</strong> — to cache scan results locally and store your license key</li>
-  </ul>
+    <div class="features-grid">
 
-  <h2>Contact</h2>
-  <p>If you have any questions about this policy, contact us at <a href="mailto:getspectra404@gmail.com">getspectra404@gmail.com</a>.</p>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h3>Security Score</h3>
+        <p>Get an instant A to F grade based on which headers are present and how they are configured. Know where a site stands at a glance.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"/>
+          </svg>
+        </div>
+        <h3>Header Analysis</h3>
+        <p>Checks 9 security headers including CSP, HSTS, X-Frame-Options, and Permissions-Policy. Missing headers are sorted by severity so you know what to fix first.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+          </svg>
+        </div>
+        <h3>Fix Snippets</h3>
+        <p>For every missing header, Spectra gives you copy-paste config for Nginx, Apache, Express, and Next.js. No Googling required.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+        </div>
+        <h3>CSP Analyzer</h3>
+        <p>Breaks down Content Security Policy directives and flags unsafe sources, missing policies, and known bypass patterns. Shows exactly which directive has the issue.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <h3>Cookie Audit <span class="pro-badge">Pro</span></h3>
+        <p>Inspect every cookie for HttpOnly, Secure, and SameSite flags. Issues are listed per cookie so you can see exactly what needs fixing.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/>
+          </svg>
+        </div>
+        <h3>CORS Analysis <span class="pro-badge">Pro</span></h3>
+        <p>Detects wildcard origins, credential mismatches, and header misconfigurations in cross-origin policy. Each finding includes severity and a plain-English explanation.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+          </svg>
+        </div>
+        <h3>Bulk Scanner <span class="pro-badge">Pro</span></h3>
+        <p>Scan up to 30 domains at once in parallel. Results load as they come in. Export the whole run as a PDF report to share with your team.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3>Info Disclosure Detection</h3>
+        <p>Flags response headers that reveal server software and version numbers, like Server and X-Powered-By. Small detail, real attack surface.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+          </svg>
+        </div>
+        <h3>HSTS Preload Check</h3>
+        <p>Checks whether the domain is hardcoded into Chrome as HTTPS-only via the HSTS preload list. Shows Preloaded, Pending, or Not listed.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <span class="section-tag">Pricing</span>
+    <h2 class="section-heading">Simple, one-time pricing</h2>
+    <p class="section-sub">
+      No subscriptions. Pay once for Pro and own it. The free tier covers most use cases for individual developers.
+    </p>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="pricing-tier">Free</div>
+        <div class="pricing-price">$0</div>
+        <p class="pricing-note">No account needed</p>
+        <hr class="pricing-divider" />
+        <ul class="pricing-features">
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Security score and grade</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> All 9 header checks</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> CSP deep analysis</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Fix snippets for 4 stacks</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> HSTS preload check</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Info disclosure detection</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Cookie and CORS preview</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Export basic report</li>
+        </ul>
+        <a href="#" class="btn-pricing btn-pricing-free">Add to Chrome</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="featured-tag">Most Popular</div>
+        <div class="pricing-tier">Pro</div>
+        <div class="pricing-price">$5 <span>one-time</span></div>
+        <p class="pricing-note">Pay once, use forever</p>
+        <hr class="pricing-divider" />
+        <ul class="pricing-features">
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Everything in Free</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Full cookie security analysis</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Full CORS analysis</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Bulk scanner, up to 30 domains</li>
+          <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Full PDF report export</li>
+        </ul>
+        <a href="#" class="btn-pricing btn-pricing-pro">Get Pro for $5</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">Spectra</a>
+    <ul class="footer-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="mailto:getspectra404@gmail.com">Contact</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2025 Spectra. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const links  = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => links.classList.remove('open'));
+  });
+</script>
 
 </body>
 </html>
