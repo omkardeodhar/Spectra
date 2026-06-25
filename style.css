@@ -94,12 +94,17 @@ nav {
 /* ── Hero ── */
 .hero {
   background: var(--dark);
+  background-image:
+    radial-gradient(ellipse 60% 60% at 75% 50%, rgba(37,99,235,0.12) 0%, transparent 70%),
+    radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px;
   padding: 96px 24px 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 64px;
   overflow: hidden;
+  position: relative;
 }
 
 .hero-copy { max-width: 500px; }
@@ -126,7 +131,12 @@ nav {
   margin-bottom: 20px;
 }
 
-.hero h1 span { color: var(--accent); }
+.hero h1 span {
+  background: linear-gradient(90deg, #60a5fa 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 .hero-sub {
   font-size: 17px;
@@ -572,6 +582,26 @@ section { padding: 88px 24px; }
 }
 
 .btn-pricing-pro:hover { background: var(--accent-h); transform: translateY(-1px); }
+
+.btn-pricing-coming-soon {
+  width: 100%;
+  padding: 12px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #cbd5e1;
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.launch-note {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
 
 /* ── Footer ── */
 footer {
