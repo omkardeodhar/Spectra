@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – Spectra</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 60px auto; padding: 0 24px; color: #111; line-height: 1.7; }
+    h1 { font-size: 24px; margin-bottom: 4px; }
+    h2 { font-size: 16px; margin-top: 32px; }
+    p, li { font-size: 15px; color: #374151; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+
+  <h1>Privacy Policy</h1>
+  <p style="color:#6b7280;font-size:14px">Last updated: June 2025</p>
+
+  <p>Spectra is a Chrome extension that audits HTTP security headers, cookies, and CORS configuration for websites you visit. This policy explains what data the extension accesses and how it is handled.</p>
+
+  <h2>Data We Access</h2>
+  <ul>
+    <li><strong>HTTP response headers</strong> — read from pages you navigate to, to evaluate security configuration. This data never leaves your device.</li>
+    <li><strong>Cookies</strong> — read from the active tab to analyze cookie security attributes (HttpOnly, Secure, SameSite). This data never leaves your device.</li>
+    <li><strong>Page URLs</strong> — used to fetch headers and perform security analysis. URLs are not stored persistently or transmitted to our servers.</li>
+  </ul>
+
+  <h2>External Requests</h2>
+  <p>Spectra makes requests to the following third-party services:</p>
+  <ul>
+    <li><strong>hstspreload.org</strong> — to check whether a domain is on the browser HSTS preload list. Only the domain name is sent. No personal data is included.</li>
+    <li><strong>Websites you choose to scan</strong> — when using the Bulk Scanner, the extension fetches HTTP headers directly from URLs you provide.</li>
+  </ul>
+  <p>No data is sent to Spectra's servers. We do not operate any data collection infrastructure.</p>
+
+  <h2>Local Storage</h2>
+  <ul>
+    <li><strong>Session storage</strong> — scan results and header data are stored temporarily in <code>chrome.storage.session</code> and are automatically cleared when the browser is closed.</li>
+    <li><strong>Local storage</strong> — your Pro license key is stored in <code>chrome.storage.local</code> on your device. It is never transmitted to third parties.</li>
+  </ul>
+
+  <h2>Data Sharing</h2>
+  <p>We do not sell, share, or transmit any personal data to third parties. The extension does not collect analytics, crash reports, or usage statistics.</p>
+
+  <h2>Permissions</h2>
+  <p>Spectra requests the following Chrome permissions:</p>
+  <ul>
+    <li><strong>webRequest</strong> — to read HTTP response headers from pages you visit</li>
+    <li><strong>cookies</strong> — to read cookie attributes for the active tab</li>
+    <li><strong>tabs</strong> — to identify the current active tab URL</li>
+    <li><strong>storage</strong> — to cache scan results locally and store your license key</li>
+  </ul>
+
+  <h2>Contact</h2>
+  <p>If you have any questions about this policy, contact us at <a href="mailto:getspectra404@gmail.com">getspectra404@gmail.com</a>.</p>
+
+</body>
+</html>
