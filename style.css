@@ -462,6 +462,29 @@ section { padding: 88px 24px; }
   stroke-width: 2.5;
 }
 
+.pricing-features li .cross {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fee2e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pricing-features li .cross svg {
+  width: 10px;
+  height: 10px;
+  stroke: var(--red);
+  stroke-width: 2.5;
+}
+
+.pricing-features li.dim {
+  color: var(--text-muted);
+}
+
 .btn-pricing {
   display: block;
   text-align: center;
