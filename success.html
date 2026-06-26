@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your License Key — Spectra</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="success.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="28" height="28" rx="5.5" fill="#0c0a1a"/>
+      <g stroke="#a5b4fc" stroke-linecap="round" fill="none" stroke-width="2.8">
+        <path d="M18.1 8.9 C18.1 5.5 10.0 4.8 9.1 9.7 C8.4 13.0 14 13.8 14 13.8"/>
+        <path d="M14 14.2 C14 14.2 19.5 14.9 18.8 18.6 C18.2 22.5 9.6 22.5 9.5 19.5"/>
+      </g>
+    </svg>
+    Spectra
+  </a>
+</nav>
+
+<div class="success-page">
+
+  <div id="success-state">
+    <div class="success-icon">&#10003;</div>
+    <h1 class="success-heading">Payment successful</h1>
+    <p class="success-sub">
+      Here is your Spectra Pro license key.<br>
+      <strong>Copy or download it now</strong> &mdash; this page cannot be revisited.
+    </p>
+
+    <div class="key-box">
+      <code id="license-key" class="license-key-text"></code>
+    </div>
+
+    <div class="key-actions">
+      <button class="btn-copy" id="copy-btn">Copy Key</button>
+      <button class="btn-download" id="download-btn">Download .txt</button>
+    </div>
+
+    <div class="key-warning">
+      This key is shown only once. If you lose it, email
+      <a href="mailto:getspectra404@gmail.com">getspectra404@gmail.com</a>
+      with your payment details and we will recover it.
+    </div>
+
+    <div class="activate-steps">
+      <h2>How to activate</h2>
+      <ol>
+        <li>Open the Spectra extension in Chrome (click the puzzle icon in your toolbar)</li>
+        <li>Click <strong>Activate Pro</strong></li>
+        <li>Paste your license key and click <strong>Activate</strong></li>
+      </ol>
+    </div>
+  </div>
+
+  <div id="error-state" hidden>
+    <div class="error-icon">&#9888;</div>
+    <h1 class="success-heading">No license found</h1>
+    <p class="success-sub">
+      It looks like you arrived here directly or the page was refreshed.<br>
+      Your license key was already shown and cleared for security.
+    </p>
+    <p class="success-sub" style="margin-top:8px">
+      If you completed a payment, email
+      <a href="mailto:getspectra404@gmail.com" class="link">getspectra404@gmail.com</a>
+      with your Razorpay payment ID and we will send your key.
+    </p>
+    <a href="index.html" class="btn-home">Back to homepage</a>
+  </div>
+
+</div>
+
+<script src="success.js"></script>
+
+</body>
+</html>
