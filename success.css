@@ -9,7 +9,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #dcfce7;
+  background: #d6f0e2;
   color: var(--green);
   font-size: 26px;
   display: flex;
@@ -22,8 +22,8 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #fef3c7;
-  color: #d97706;
+  background: #fdf0d5;
+  color: #c87830;
   font-size: 26px;
   display: flex;
   align-items: center;
@@ -57,7 +57,7 @@
   font-family: 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
   font-size: 20px;
   font-weight: 700;
-  color: #a5b4fc;
+  color: #d4a85a;
   letter-spacing: 0.06em;
   word-break: break-all;
   background: none;
@@ -100,8 +100,8 @@
 .btn-download:hover { background: var(--light); }
 
 .key-warning {
-  background: #fffbeb;
-  border: 1px solid #fde68a;
+  background: #fdf5e0;
+  border: 1px solid #e8d080;
   border-radius: var(--radius);
   padding: 14px 18px;
   font-size: 13px;

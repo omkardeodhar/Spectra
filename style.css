@@ -1,19 +1,19 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --dark:        #0c0a1a;
-  --dark-2:      #1a1730;
-  --light:       #f9f8f6;
-  --white:       #ffffff;
-  --text:        #1c1917;
-  --text-muted:  #78716c;
-  --text-light:  #f5f5f4;
-  --text-dim:    #a8a29e;
-  --accent:      #6366f1;
-  --accent-h:    #4f46e5;
+  --dark:        #1a1612;
+  --dark-2:      #2e231a;
+  --light:       #f5ede0;
+  --white:       #fdfaf5;
+  --text:        #1a1612;
+  --text-muted:  #7a6e62;
+  --text-light:  #f0e6d6;
+  --text-dim:    #a09080;
+  --accent:      #bf8438;
+  --accent-h:    #a06e2a;
   --green:       #16a34a;
   --red:         #dc2626;
-  --border:      #e7e5e4;
+  --border:      #e5d8c5;
   --radius:      10px;
 }
 
@@ -32,7 +32,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255,255,255,0.92);
+  background: rgba(253,250,245,0.93);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 0 24px;
@@ -117,7 +117,7 @@ nav {
   margin-bottom: 20px;
 }
 
-.hero h1 span { color: #a5b4fc; }
+.hero h1 span { color: #d4a85a; }
 
 .hero-sub {
   font-size: 17px;
@@ -163,7 +163,7 @@ nav {
 .hero-note {
   margin-top: 16px;
   font-size: 12px;
-  color: #57534e;
+  color: #8a7868;
 }
 
 .mock-wrap {
@@ -192,11 +192,11 @@ nav {
 }
 
 .mock-bar-brand { font-size: 13px; font-weight: 600; }
-.mock-bar-url   { font-size: 11px; color: #64748b; }
+.mock-bar-url   { font-size: 11px; color: #9e8e7a; }
 
 .mock-score-section {
   padding: 12px 14px 10px;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid #ede8de;
 }
 
 .mock-score-lbl {
@@ -204,7 +204,7 @@ nav {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: #94a3b8;
+  color: #9e8e7a;
   margin-bottom: 6px;
 }
 
@@ -216,33 +216,33 @@ nav {
 }
 
 .mock-grade      { font-size: 22px; font-weight: 800; color: #16a34a; line-height: 1; }
-.mock-grade-desc { font-size: 13px; font-weight: 600; color: #374151; }
-.mock-score-num  { margin-left: auto; font-size: 16px; font-weight: 700; color: #111827; }
+.mock-grade-desc { font-size: 13px; font-weight: 600; color: #2a2018; }
+.mock-score-num  { margin-left: auto; font-size: 16px; font-weight: 700; color: #1a1612; }
 
-.mock-progress { height: 3px; background: #f1f5f9; border-radius: 2px; }
+.mock-progress { height: 3px; background: #ede8de; border-radius: 2px; }
 .mock-progress-fill { height: 100%; width: 84%; background: #16a34a; border-radius: 2px; }
 
 .mock-tabs {
   display: flex;
-  background: #f9fafb;
-  border-bottom: 1px solid #e5e7eb;
+  background: #f5ede0;
+  border-bottom: 1px solid #e5d8c5;
 }
 
 .mock-tab {
   padding: 7px 16px;
   font-size: 11px;
   font-weight: 600;
-  color: #6b7280;
+  color: #7a6e62;
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
 }
 
-.mock-tab.active { color: #111827; border-bottom-color: #111827; }
+.mock-tab.active { color: #1a1612; border-bottom-color: #1a1612; }
 
 .mock-tab .pro-tag {
   font-size: 8px;
-  background: #eef2ff;
-  color: #4338ca;
+  background: #fdf0d8;
+  color: #a07020;
   padding: 1px 4px;
   border-radius: 3px;
   margin-left: 4px;
@@ -256,7 +256,7 @@ nav {
   grid-template-columns: 22px 1fr 80px 60px;
   align-items: center;
   padding: 8px 14px;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid #ede8de;
   gap: 2px;
 }
 
@@ -267,7 +267,7 @@ nav {
 .mock-hname {
   font-size: 11px;
   font-weight: 500;
-  color: #111827;
+  color: #1a1612;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -338,7 +338,7 @@ section { padding: 88px 24px; }
   align-items: center;
   justify-content: center;
   margin-bottom: 14px;
-  background: #eef2ff;
+  background: #fdf0d8;
 }
 
 .feature-icon svg { width: 20px; height: 20px; stroke: var(--accent); }
@@ -353,20 +353,20 @@ section { padding: 88px 24px; }
   gap: 8px;
 }
 
-.pro-badge {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  background: #eef2ff;
-  color: #4338ca;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
 .feature-card p {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.65;
+}
+
+.pro-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: #fdf0d8;
+  color: #a07020;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .pricing { background: var(--white); }
@@ -447,7 +447,7 @@ section { padding: 88px 24px; }
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #dcfce7;
+  background: #d6f0e2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -466,7 +466,7 @@ section { padding: 88px 24px; }
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #fee2e2;
+  background: #fce8e8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -506,7 +506,7 @@ section { padding: 88px 24px; }
   border: 1px solid var(--border);
 }
 
-.btn-pricing-free:hover { background: #f0efed; }
+.btn-pricing-free:hover { background: #ede5d5; }
 
 .btn-pricing-pro {
   background: var(--accent);
@@ -542,14 +542,14 @@ footer {
 
 .footer-links a {
   font-size: 13px;
-  color: #57534e;
+  color: #9a8878;
   text-decoration: none;
   transition: color 0.15s;
 }
 
 .footer-links a:hover { color: var(--text-dim); }
 
-.footer-copy { font-size: 13px; color: #44403c; }
+.footer-copy { font-size: 13px; color: #7a6a5a; }
 
 .policy-page {
   max-width: 680px;
@@ -586,7 +586,7 @@ footer {
 
 .policy-intro {
   font-size: 15px;
-  color: #44403c;
+  color: #44383a;
   line-height: 1.75;
   margin-bottom: 40px;
   padding-bottom: 32px;
@@ -612,7 +612,7 @@ footer {
 
 .policy-page p {
   font-size: 15px;
-  color: #44403c;
+  color: #44383a;
   line-height: 1.75;
   margin-bottom: 12px;
 }
@@ -630,7 +630,7 @@ footer {
 
 .policy-page li {
   font-size: 15px;
-  color: #44403c;
+  color: #44383a;
   line-height: 1.7;
   padding-left: 16px;
   position: relative;
@@ -653,8 +653,8 @@ footer {
 code {
   font-family: 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
   font-size: 13px;
-  background: #f0efed;
-  color: #1c1917;
+  background: #f0e8d6;
+  color: var(--text);
   padding: 1px 6px;
   border-radius: 4px;
 }
