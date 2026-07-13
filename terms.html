@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Service — Spectra</title>
+  <title>Terms of Service | Spectra</title>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -65,10 +65,17 @@
     <h2>2. Permitted Use</h2>
     <p>
       Spectra is intended for use by developers, security researchers, and IT professionals
-      for the purpose of auditing the security configuration of web properties they own,
-      administer, or have been explicitly authorised to test. Use of the tool to scan
-      systems without the knowledge or consent of their owner may violate applicable law
-      and is not a permitted use under this license.
+      to evaluate the HTTP security header configuration of web properties. The extension
+      operates by reading the response headers that a web server transmits publicly in the
+      course of a normal page load — information that is visible to any browser making the
+      same request. It does not probe for vulnerabilities, access authentication-protected
+      resources, or interact with a site in any way beyond what a standard browser visit
+      would do.
+    </p>
+    <p>
+      You may use Spectra on any publicly accessible website. However, using the security
+      information surfaced by Spectra as part of an effort to compromise, exploit, or attack
+      a system you are not authorised to access is not a permitted use under this license.
     </p>
   </div>
 
@@ -124,13 +131,20 @@
   </div>
 
   <div class="policy-section">
-    <h2>7. Service Availability</h2>
+    <h2>7. Service Availability and Data</h2>
     <p>
       Spectra performs all header analysis locally within your browser and does not depend
-      on our servers for its core functionality. However, license validation requires
-      periodic contact with our license server. We do not guarantee uninterrupted
-      availability of the validation service and include a grace period in the extension
-      to handle temporary outages without disrupting your access.
+      on our servers for its core functionality. Spectra does not transmit the websites
+      you visit to our servers, and we do not collect or store your browsing history.
+      The only outbound network requests made by the extension are periodic license
+      validation calls to our server and an optional HSTS preload status lookup against
+      a public external service (hstspreload.org), which receives only the domain name
+      being checked and no other identifying information.
+    </p>
+    <p>
+      License validation requires periodic contact with our license server. We do not
+      guarantee uninterrupted availability of the validation service and include a grace
+      period in the extension to handle temporary outages without disrupting your access.
     </p>
     <p>
       We may update, modify, or discontinue any feature of Spectra at any time. We will
@@ -218,10 +232,9 @@
     <h2>15. Changes to These Terms</h2>
     <p>
       We may update these terms from time to time. When we do, we will revise the date
-      at the top of this page. Continued use of Spectra after the updated terms are
-      published constitutes your acceptance of the changes. If we make material changes
-      that affect existing Pro users, we will make reasonable efforts to communicate
-      those changes.
+      at the top of this page. When material changes are made, the extension will prompt
+      you to review and re-accept the updated terms before you can continue using Spectra.
+      Continuing past that prompt constitutes your acceptance of the changes.
     </p>
   </div>
 

@@ -19,7 +19,7 @@ function initCheckout() {
         amount,
         currency,
         name: 'Spectra',
-        description: 'Pro License — one-time',
+        description: 'Pro License, one-time',
         order_id,
         config: {
           display: {
@@ -37,11 +37,11 @@ function initCheckout() {
             preferences: { show_default_blocks: false },
           },
         },
-        theme: { color: '#2563eb' },
+        theme: { color: '#bf8438' },
         modal: {
           ondismiss() {
             btn.disabled = false;
-            btn.textContent = 'Get Pro — ₹299';
+            btn.textContent = 'Get Pro for ₹299';
           },
         },
         handler: async (response) => {
@@ -67,7 +67,7 @@ function initCheckout() {
               response.razorpay_payment_id
             );
             btn.disabled = false;
-            btn.textContent = 'Get Pro — ₹299';
+            btn.textContent = 'Get Pro for ₹299';
           }
         },
       };
@@ -77,7 +77,7 @@ function initCheckout() {
     } catch {
       alert('Could not start checkout. Please try again.');
       btn.disabled = false;
-      btn.textContent = 'Get Pro — ₹299';
+      btn.textContent = 'Get Pro for ₹299';
     }
   });
 }

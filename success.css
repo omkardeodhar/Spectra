@@ -113,6 +113,18 @@
 
 .key-warning a { color: #92400e; font-weight: 600; }
 
+.key-notice {
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
 .activate-steps {
   background: var(--light);
   border: 1px solid var(--border);
