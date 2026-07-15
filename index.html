@@ -4,8 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Spectra is a Chrome extension that audits HTTP security headers, cookies, and CORS configuration for any website. Get an instant security grade and fix recommendations." />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.razorpay.com; connect-src 'self' https://spectra-worker.getspectra404.workers.dev https://*.razorpay.com; frame-src https://*.razorpay.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.razorpay.com; connect-src 'self' https://spectra-worker.getspectra404.workers.dev https://*.razorpay.com; frame-src https://*.razorpay.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'">
   <title>Spectra - Security Header Auditor</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Spectra - Security Header Auditor">
+  <meta property="og:description" content="Instant HTTP security header audit, cookie analysis, and CORS check for any website. Right from your browser.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spectra - Security Header Auditor">
+  <meta name="twitter:description" content="Instant HTTP security header audit, cookie analysis, and CORS check for any website. Right from your browser.">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -37,73 +44,161 @@
 
 <section class="hero">
   <div class="hero-copy">
-    <h1>Security headers,<br><span>without the guesswork.</span></h1>
+    <h1>Security headers,<br><span>right from your browser.</span></h1>
     <p class="hero-sub">
       Spectra scans any website and shows you which HTTP security headers are missing,
       what risks they create, and the exact config to fix them.
-      Works right from your browser, in seconds.
+      Results in seconds, no setup required.
     </p>
     <div class="hero-actions">
       <a href="https://chromewebstore.google.com/detail/aijpnaebekpnldkleilonkkdpdjjokeo" class="btn-primary">Add to Chrome, Free</a>
       <a href="#features" class="btn-secondary">See what it checks &rarr;</a>
     </div>
-    <p class="hero-note">No account needed. Free to install.</p>
+    <p class="hero-note">No account needed. Free to install. All analysis runs locally in your browser.</p>
   </div>
 
-  <div class="mock-wrap">
-    <div class="mock-popup">
-      <div class="mock-bar">
-        <span class="mock-bar-brand">Spectra</span>
-        <span class="mock-bar-url">github.com</span>
-      </div>
-      <div class="mock-score-section">
-        <div class="mock-score-lbl">Security Score</div>
-        <div class="mock-score-row">
-          <span class="mock-grade">A</span>
-          <span class="mock-grade-desc">Excellent</span>
-          <span class="mock-score-num">84 / 100</span>
+  <div class="mock-wrap" id="mock-wrap">
+    <div class="mock-glow"></div>
+    <div class="mock-float-wrap" id="mock-float-wrap">
+      <div class="mock-popup" id="mock-popup">
+        <div class="mock-scan-line" id="mock-scan-line"></div>
+        <div class="mock-bar">
+          <span class="mock-bar-brand">Spectra</span>
+          <span class="mock-bar-url" id="mock-url"></span>
+          <button class="mock-theme-btn" id="mock-theme-btn">
+            <svg id="mock-theme-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          </button>
+          <span class="mock-ext-toggle">
+            <span class="mock-ext-track on" id="mock-ext-track"></span>
+          </span>
         </div>
-        <div class="mock-progress">
-          <div class="mock-progress-fill"></div>
+        <div class="mock-score-section">
+          <div class="mock-score-lbl">Security Score</div>
+          <div class="mock-score-row">
+            <span class="mock-grade" id="mock-grade">—</span>
+            <span class="mock-grade-desc" id="mock-grade-desc">Scanning</span>
+            <span class="mock-score-num" id="mock-score-num">— / 100</span>
+          </div>
+          <div class="mock-progress">
+            <div class="mock-progress-fill" id="mock-progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="mock-tabs">
+          <div class="mock-tab active">Headers</div>
+          <div class="mock-tab">Cookies <span class="pro-tag">PRO</span></div>
+          <div class="mock-tab">CORS <span class="pro-tag">PRO</span></div>
+        </div>
+        <div class="mock-content-area">
+          <div class="mock-tab-pane active" id="mock-pane-headers">
+            <div class="mock-list-header">
+              <span></span>
+              <span>Header</span>
+              <span>Pts</span>
+              <span>Impact</span>
+              <span>Status</span>
+            </div>
+            <ul class="mock-rows" id="mock-headers-view">
+              <li class="mock-row mock-row-anim mock-row-tap" id="mock-row-xfo">
+                <span class="mock-dot red"></span>
+                <span class="mock-hname">X-Frame-Options</span>
+                <span class="mock-pts pts-missing">15</span>
+                <span class="mock-risk high">High</span>
+                <span class="mock-status missing">Not Set</span>
+              </li>
+              <li class="mock-detail-li" id="mock-detail">
+                <div class="mock-detail-panel">
+                  <div class="mock-detail-top">
+                    <span class="mock-detail-name">X-Frame-Options</span>
+                    <span class="mock-detail-badge">Not Set</span>
+                  </div>
+                  <p class="mock-detail-desc">Prevents your page from being loaded inside an iframe, blocking clickjacking attacks.</p>
+                  <div class="mock-detail-body">
+                    <div class="mock-dtabs">
+                      <span class="mock-dtab active">Nginx</span>
+                      <span class="mock-dtab">Apache</span>
+                      <span class="mock-dtab">Express</span>
+                      <span class="mock-dtab">Next.js</span>
+                    </div>
+                    <pre class="mock-snippet">add_header X-Frame-Options "DENY" always;</pre>
+                  </div>
+                </div>
+              </li>
+              <li class="mock-row mock-row-anim">
+                <span class="mock-dot red"></span>
+                <span class="mock-hname">Permissions-Policy</span>
+                <span class="mock-pts pts-missing">7</span>
+                <span class="mock-risk medium">Medium</span>
+                <span class="mock-status missing">Not Set</span>
+              </li>
+              <li class="mock-row mock-row-anim">
+                <span class="mock-dot green"></span>
+                <span class="mock-hname">Content-Security-Policy</span>
+                <span class="mock-pts pts-active">25</span>
+                <span class="mock-risk"></span>
+                <span class="mock-status active">Active</span>
+              </li>
+              <li class="mock-row mock-row-anim">
+                <span class="mock-dot green"></span>
+                <span class="mock-hname">Strict-Transport-Security</span>
+                <span class="mock-pts pts-active">20</span>
+                <span class="mock-risk"></span>
+                <span class="mock-status active">Active</span>
+              </li>
+              <li class="mock-row mock-row-anim">
+                <span class="mock-dot green"></span>
+                <span class="mock-hname">Referrer-Policy</span>
+                <span class="mock-pts pts-active">8</span>
+                <span class="mock-risk"></span>
+                <span class="mock-status active">Active</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mock-tab-pane" id="mock-pane-cookies">
+            <div class="mock-cookie-item">
+              <div class="mock-cookie-name-row">
+                <span class="mock-cookie-name">session_id</span>
+              </div>
+              <div class="mock-cookie-flags">
+                <span class="mock-flag-chip mock-flag-ok">HttpOnly</span>
+                <span class="mock-flag-chip mock-flag-ok">Secure</span>
+                <span class="mock-flag-chip mock-flag-ok">SameSite=Lax</span>
+              </div>
+            </div>
+            <div class="mock-cookie-item">
+              <div class="mock-cookie-name-row">
+                <span class="mock-cookie-name">_ga</span>
+              </div>
+              <div class="mock-cookie-flags"></div>
+              <div class="mock-cookie-issues">
+                <div class="mock-cookie-issue"><span class="mock-cookie-issue-dot"></span><span>Missing HttpOnly: readable by JavaScript (XSS risk)</span></div>
+                <div class="mock-cookie-issue"><span class="mock-cookie-issue-dot"></span><span>Missing Secure: sent over plain HTTP</span></div>
+              </div>
+            </div>
+            <div class="mock-cookie-item">
+              <div class="mock-cookie-name-row">
+                <span class="mock-cookie-name">csrf_token</span>
+              </div>
+              <div class="mock-cookie-flags">
+                <span class="mock-flag-chip mock-flag-ok">Secure</span>
+                <span class="mock-flag-chip mock-flag-ok">SameSite=Strict</span>
+              </div>
+              <div class="mock-cookie-issues">
+                <div class="mock-cookie-issue"><span class="mock-cookie-issue-dot"></span><span>Missing HttpOnly: readable by JavaScript (XSS risk)</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-footer">
+          <div class="mock-footer-left">
+            <button class="mock-btn mock-btn-pro">Get Pro →</button>
+            <button class="mock-btn mock-btn-upgrade">Activate Key</button>
+          </div>
+          <div class="mock-footer-right">
+            <button class="mock-btn mock-btn-ghost">Export Report</button>
+            <button class="mock-btn mock-btn-solid">Bulk Scan <span class="mock-pro-tag">PRO</span></button>
+          </div>
         </div>
       </div>
-      <div class="mock-tabs">
-        <div class="mock-tab active">Headers</div>
-        <div class="mock-tab">Cookies <span class="pro-tag">PRO</span></div>
-        <div class="mock-tab">CORS <span class="pro-tag">PRO</span></div>
-      </div>
-      <ul class="mock-rows">
-        <li class="mock-row">
-          <span class="mock-dot green"></span>
-          <span class="mock-hname">Content-Security-Policy</span>
-          <span class="mock-risk"></span>
-          <span class="mock-status active">Active</span>
-        </li>
-        <li class="mock-row">
-          <span class="mock-dot green"></span>
-          <span class="mock-hname">Strict-Transport-Security</span>
-          <span class="mock-risk"></span>
-          <span class="mock-status active">Active</span>
-        </li>
-        <li class="mock-row">
-          <span class="mock-dot red"></span>
-          <span class="mock-hname">X-Frame-Options</span>
-          <span class="mock-risk high">High</span>
-          <span class="mock-status missing">Not Set</span>
-        </li>
-        <li class="mock-row">
-          <span class="mock-dot red"></span>
-          <span class="mock-hname">Permissions-Policy</span>
-          <span class="mock-risk medium">Medium</span>
-          <span class="mock-status missing">Not Set</span>
-        </li>
-        <li class="mock-row">
-          <span class="mock-dot green"></span>
-          <span class="mock-hname">Referrer-Policy</span>
-          <span class="mock-risk"></span>
-          <span class="mock-status active">Active</span>
-        </li>
-      </ul>
     </div>
   </div>
 </section>
@@ -114,6 +209,36 @@
     <p class="section-sub">All analysis runs locally in your browser. Nothing leaves your device.</p>
 
     <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <h3>Cookie Audit <span class="pro-badge">Pro</span></h3>
+        <p>Inspect every cookie for HttpOnly, Secure, and SameSite flags. Issues are listed per cookie so you can see exactly what needs fixing.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/>
+          </svg>
+        </div>
+        <h3>CORS Analysis <span class="pro-badge">Pro</span></h3>
+        <p>Detects wildcard origins, credential mismatches, and header misconfigurations in cross-origin policy. Each finding includes severity and a plain English explanation.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+          </svg>
+        </div>
+        <h3>Bulk Scanner <span class="pro-badge">Pro</span></h3>
+        <p>Scan up to 30 domains at once in parallel. Results load as they come in. Export the whole run as a PDF report to share with your team.</p>
+      </div>
 
       <div class="feature-card">
         <div class="feature-icon">
@@ -142,7 +267,7 @@
           </svg>
         </div>
         <h3>Fix Snippets</h3>
-        <p>For every missing header, Spectra gives you copy-paste config for Nginx, Apache, Express, and Next.js. No Googling required.</p>
+        <p>For every missing header, Spectra gives you ready to paste config for Nginx, Apache, Express, and Next.js. No Googling required.</p>
       </div>
 
       <div class="feature-card">
@@ -172,37 +297,7 @@
           </svg>
         </div>
         <h3>HSTS Preload Check</h3>
-        <p>Checks whether the domain is hardcoded into Chrome as HTTPS-only via the HSTS preload list. Shows Preloaded, Pending, or Not listed.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-          </svg>
-        </div>
-        <h3>Cookie Audit <span class="pro-badge">Pro</span></h3>
-        <p>Inspect every cookie for HttpOnly, Secure, and SameSite flags. Issues are listed per cookie so you can see exactly what needs fixing.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/>
-          </svg>
-        </div>
-        <h3>CORS Analysis <span class="pro-badge">Pro</span></h3>
-        <p>Detects wildcard origins, credential mismatches, and header misconfigurations in cross-origin policy. Each finding includes severity and a plain-English explanation.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">
-          <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
-          </svg>
-        </div>
-        <h3>Bulk Scanner <span class="pro-badge">Pro</span></h3>
-        <p>Scan up to 30 domains at once in parallel. Results load as they come in. Export the whole run as a PDF report to share with your team.</p>
+        <p>Checks whether the domain is hardcoded into Chrome as HTTPS only via the HSTS preload list. Shows Preloaded, Pending, or Not listed.</p>
       </div>
 
     </div>
@@ -239,7 +334,7 @@
       <div class="pricing-card featured">
         <div class="pricing-tier">Pro</div>
         <div class="pricing-price">&#8377;299 <span>one-time</span></div>
-        <p class="pricing-note">Pay once, use forever</p>
+        <p class="pricing-note">Pay once, use forever. Roughly $3.50 USD.</p>
         <hr class="pricing-divider" />
         <ul class="pricing-features">
           <li><span class="check"><svg fill="none" viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span> Security score &amp; grade</li>
@@ -277,6 +372,8 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
 <script src="checkout.js" defer></script>
 <script src="nav.js" defer></script>
+<script src="mock-anim.js" defer></script>
+
 
 </body>
 </html>
