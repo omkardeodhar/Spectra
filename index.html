@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Spectra is a Chrome extension that audits HTTP security headers, cookies, and CORS configuration for any website. Get an instant security grade and fix recommendations." />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.razorpay.com; connect-src 'self' https://spectra-worker.getspectra404.workers.dev https://*.razorpay.com; frame-src https://*.razorpay.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.razorpay.com; connect-src 'self' https://spectra-worker.getspectra404.workers.dev https://*.razorpay.com; frame-src https://*.razorpay.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://api.producthunt.com; object-src 'none'; base-uri 'self'">
   <title>Spectra - Security Header Auditor</title>
   <link rel="icon" type="image/svg+xml" href="logo.svg">
   <meta property="og:type" content="website">
@@ -46,8 +46,8 @@
   <div class="hero-copy">
     <h1>Security headers,<br><span>right from your browser.</span></h1>
     <p class="hero-sub">
-      Spectra checks 9 HTTP security headers on any website and shows you which are missing,
-      what risks they create, and the exact config to fix them.
+      Spectra is a Chrome extension that checks 9 HTTP security headers on any website
+      and shows you which are missing, what risks they create, and the exact config to fix them.
       Results in seconds, no setup required.
     </p>
     <div class="hero-actions">
@@ -55,6 +55,7 @@
       <a href="#features" class="btn-secondary">See what it checks &rarr;</a>
     </div>
     <p class="hero-note">No account needed. Free to install. All analysis runs locally in your browser.</p>
+    <a href="https://www.producthunt.com/products/spectra-5?utm_source=badge-follow&utm_medium=badge&utm_source=badge-spectra&#0045;5" target="_blank" rel="noopener" class="ph-badge"><img src="https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=1270429&theme=dark" alt="Spectra on Product Hunt" style="width:250px;height:54px;" width="250" height="54" /></a>
   </div>
 
   <div class="mock-wrap" id="mock-wrap">
@@ -350,6 +351,35 @@
         </ul>
         <button id="get-pro-btn" class="btn-pricing btn-pricing-pro">Get Pro for ₹299</button>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <h2 class="section-heading">Common questions</h2>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary class="faq-q">Is the free tier really free forever?</summary>
+        <p class="faq-a">Yes. No trial period, no expiry, no credit card. The free tier includes the full header analysis, security score, CSP deep analysis, fix snippets, HSTS preload check, and info disclosure detection. The only things behind Pro are cookie audit, CORS analysis, bulk scanner, and PDF export.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Does it work on all websites?</summary>
+        <p class="faq-a">Spectra reads HTTP response headers from whichever page you have open. It works on any URL Chrome can load, including localhost and internal tools. Some headers are only visible server side so results depend on what the server actually sends.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Is this Chrome only?</summary>
+        <p class="faq-a">Spectra is a Chrome extension. It also works in Chromium based browsers like Microsoft Edge and Brave. Firefox is not supported.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">What happens to my data?</summary>
+        <p class="faq-a">Nothing leaves your device. All analysis runs locally in your browser. Spectra reads headers and cookies from the active tab and processes them on device. There are no analytics, no tracking scripts, and no account required.</p>
+      </details>
 
     </div>
   </div>

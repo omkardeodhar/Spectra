@@ -167,6 +167,11 @@ nav {
   color: #8a7868;
 }
 
+.ph-badge {
+  display: inline-block;
+  margin-top: 20px;
+}
+
 .mock-wrap {
   flex-shrink: 0;
   perspective: 1200px;
@@ -429,7 +434,9 @@ section { padding: 88px 24px; }
 }
 
 .pricing .section-heading,
-.pricing .section-sub {
+.pricing .section-sub,
+.faq .section-heading,
+.faq .section-sub {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -1104,6 +1111,60 @@ code {
   .pricing-grid  { grid-template-columns: 1fr; }
   .footer-inner  { flex-direction: column; align-items: flex-start; gap: 16px; }
   section { padding: 64px 24px; }
+}
+
+/* FAQ */
+.faq { background: var(--light); }
+
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  gap: 16px;
+}
+
+.faq-q::-webkit-details-marker { display: none; }
+
+.faq-q::after {
+  content: '+';
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] .faq-q::after {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  padding: 0 22px 18px;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0;
 }
 
 /* Scale down the mock popup for phone viewports */
